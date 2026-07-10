@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Installs the papercut CLI from the latest GitHub release.
+# Installs the papercuts CLI from the latest GitHub release.
 #
 #   curl -fsSL https://raw.githubusercontent.com/jergason/papercuts/main/install.sh | sh
 #
@@ -66,11 +66,11 @@ fi
 tar -xzf "${WORKDIR}/${ARCHIVE}" -C "${WORKDIR}"
 
 mkdir -p "${INSTALL_DIR}"
-mv "${WORKDIR}/papercut" "${INSTALL_DIR}/papercut"
-chmod +x "${INSTALL_DIR}/papercut"
+mv "${WORKDIR}/papercuts" "${INSTALL_DIR}/papercuts"
+chmod +x "${INSTALL_DIR}/papercuts"
 
-echo "Installed papercut to ${INSTALL_DIR}/papercut" >&2
-if ! command -v papercut >/dev/null 2>&1; then
+echo "Installed papercuts to ${INSTALL_DIR}/papercuts" >&2
+if ! command -v papercuts >/dev/null 2>&1; then
   echo "Note: ${INSTALL_DIR} is not on your PATH. Add it, e.g.:" >&2
   echo "  export PATH=\"${INSTALL_DIR}:\$PATH\"" >&2
 fi

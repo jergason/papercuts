@@ -8,7 +8,7 @@ This is a reimplementation of the technique [Steve Ruiz described on X](https://
 
 ## What's here
 
-- **`papercut`** - a small, dependency-free Go binary. `papercut -m <model> "message"` appends a timestamped entry to `PAPERCUTS.md` at the root of the current git repo.
+- **`papercuts`** - a small, dependency-free Go binary. `papercuts -m <model> "message"` appends a timestamped entry to `PAPERCUTS.md` at the root of the current git repo.
 - **`skills/papercuts-fix`** - an [agent skill](https://github.com/vercel-labs/skills) that sweeps `PAPERCUTS.md`, fixes what's safely fixable, and leaves the rest for a human to decide.
 - **`agents-md-snippet.md`** - a copy-pasteable instruction block for your `AGENTS.md` / `CLAUDE.md` telling agents to log papercuts proactively.
 
@@ -21,12 +21,12 @@ curl -fsSL https://raw.githubusercontent.com/jergason/papercuts/main/install.sh 
 
 Downloads the right prebuilt binary for your OS/arch from the [latest release](https://github.com/jergason/papercuts/releases/latest), verifies its checksum, and installs it to `$HOME/.local/bin` (override with `INSTALL_DIR`). No Go, Node, or other toolchain required on the machine that runs it.
 
-Or, if you already have Go: `go install github.com/jergason/papercuts/cmd/papercut@latest`
+Or, if you already have Go: `go install github.com/jergason/papercuts/cmd/papercuts@latest`
 
 ## Usage
 
 ```sh
-papercut -m gpt-5-codex "Ran rg with an unquoted zsh glob and got 'no matches found' before rg could run. Quoting globs avoids this."
+papercuts -m gpt-5-codex "Ran rg with an unquoted zsh glob and got 'no matches found' before rg could run. Quoting globs avoids this."
 ```
 
 Appends to `PAPERCUTS.md` at the repo root, found by walking up from `cwd` looking for `.git`.
@@ -55,7 +55,7 @@ Then, every so often, ask your agent to fix the papercuts (or trigger however yo
 ## Building from source
 
 ```sh
-go build ./cmd/papercut
+go build ./cmd/papercuts
 ```
 
 Releases are cut with [GoReleaser](https://goreleaser.com/) via `.github/workflows/release.yml` on tag push (`vX.Y.Z`).

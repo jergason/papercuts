@@ -1,4 +1,4 @@
-// Command papercut appends a timestamped friction log entry to PAPERCUTS.md
+// Command papercuts appends a timestamped friction log entry to PAPERCUTS.md
 // at the root of the current git repository.
 package main
 
@@ -14,10 +14,10 @@ import (
 
 var version = "dev"
 
-const usage = `papercut - log a small friction encountered while working in this repo
+const usage = `papercuts - log a small friction encountered while working in this repo
 
 Usage:
-  papercut -m <model> "message describing what got in the way"
+  papercuts -m <model> "message describing what got in the way"
 
 Flags:
   -m string   model/agent identifier (required)
@@ -26,13 +26,13 @@ Flags:
 
 func main() {
 	if err := run(os.Args[1:]); err != nil {
-		fmt.Fprintln(os.Stderr, "papercut:", err)
+		fmt.Fprintln(os.Stderr, "papercuts:", err)
 		os.Exit(1)
 	}
 }
 
 func run(args []string) error {
-	fs := flag.NewFlagSet("papercut", flag.ContinueOnError)
+	fs := flag.NewFlagSet("papercuts", flag.ContinueOnError)
 	fs.Usage = func() { fmt.Fprint(os.Stderr, usage) }
 	model := fs.String("m", "", "model/agent identifier")
 	showVersion := fs.Bool("v", false, "print version and exit")
@@ -108,7 +108,7 @@ func currentUser() string {
 	return os.Getenv("USERNAME")
 }
 
-const fileHeader = "# Papercuts\n\nSmall frictions logged by agents while working in this repo: dead-end tool calls, broken links, misleading errors, undocumented setup steps. Not accomplishments (see LOG.md) and not tracked bugs (see the issue tracker) - just the sand in the gears. Logged via `papercut`.\n\n"
+const fileHeader = "# Papercuts\n\nSmall frictions logged by agents while working in this repo: dead-end tool calls, broken links, misleading errors, undocumented setup steps. Not accomplishments (see LOG.md) and not tracked bugs (see the issue tracker) - just the sand in the gears. Logged via `papercuts`.\n\n"
 
 func appendEntry(path, model, author, message string) error {
 	_, statErr := os.Stat(path)
