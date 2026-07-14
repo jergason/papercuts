@@ -14,3 +14,7 @@ Testing a GH Actions env-var-driven shell command locally via `VAR=val uvx "tool
 
 Running go test ./... in the managed workspace failed because Go's default build cache under ~/Library/Caches was read-only. Setting GOCACHE to a writable /tmp directory avoids the sandbox-specific failure.
 
+2026-07-14T14:52:27.321Z - gpt-5-codex - Jamison Dance
+
+Creating an annotated git tag failed with 'unable to create temporary file' because this managed workspace allowed git commit but blocked the tag object's write inside .git. The tag operation needed an escalated retry.
+
