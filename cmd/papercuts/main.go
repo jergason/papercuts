@@ -108,7 +108,7 @@ func currentUser() string {
 	return os.Getenv("USERNAME")
 }
 
-const fileHeader = "# Papercuts\n\nSmall frictions logged by agents while working in this repo: dead-end tool calls, broken links, misleading errors, undocumented setup steps. Logged via `papercuts`.\n\n"
+const fileHeader = "# Papercuts\n\nSmall frictions whose plausible fixes would change version-controlled files in this repository. Logged via `papercuts`.\n\n"
 
 func appendEntry(path, model, author, message string) error {
 	_, statErr := os.Stat(path)

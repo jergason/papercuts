@@ -6,13 +6,17 @@ disable-model-invocation: true
 
 # Fix papercuts
 
-`PAPERCUTS.md` is a running log of small frictions other agents hit while working in this repo: dead-end tool calls, broken links, misleading errors, undocumented setup steps. Individually none of these were worth stopping for, but together they're worth cleaning up.
+`PAPERCUTS.md` is a running log of small, repo-owned frictions. A valid entry has a plausible fix in a version-controlled file in this repository: code, tests, scripts, configuration, or documentation.
 
 ## Steps
 
 1. Read `PAPERCUTS.md` at the repo root. If it doesn't exist or is empty, say so and stop.
-2. Go entry by entry. Each entry has a `timestamp - model - author` header line followed by a short description of the friction, and sometimes a guessed cause/fix.
-3. For each entry, decide if it's **safely fixable in isolation**: a typo or stale command in docs, a missing/wrong script, a broken link, a small config fix, an obviously wrong path. Make the fix.
-4. Skip entries that are ambiguous, require a design decision, or touch behavior beyond a small local correction. Leave those in `PAPERCUTS.md` untouched - don't guess.
-5. Once an entry is fixed, remove that entry (its header line and message) from `PAPERCUTS.md`. Leave the file's `# Papercuts` header and any remaining entries intact.
-6. When done, report a short summary: what was fixed, and what was left behind and why. Don't commit anything - that's the user's call.
+2. Classify each entry before changing code:
+   - **Repo-owned:** A plausible fix changes a version-controlled file in this repository.
+   - **Out of scope:** The friction is a generic shell mistake, agent or tool limitation, sandbox restriction, external service behavior, or belongs to another repository.
+   - Treat an external problem as repo-owned only when this repository should detect, document, or accommodate it.
+3. Remove clearly out-of-scope entries from `PAPERCUTS.md`. Record their disposition for the final summary, including the owning repository when apparent.
+4. For each repo-owned entry, decide if it is **safely fixable in isolation**: a typo or stale command in docs, a missing or wrong script, a broken link, a small config fix, or an obviously wrong path. Make the fix.
+5. Leave repo-owned entries that are ambiguous, require a design decision, or touch behavior beyond a small local correction. Do not guess.
+6. Remove fixed entries from `PAPERCUTS.md`. Leave its header and unresolved repo-owned entries intact.
+7. Report what was fixed, what out-of-scope material was pruned or rerouted, and what repo-owned work remains. Do not commit anything.

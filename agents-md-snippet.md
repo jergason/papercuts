@@ -1,7 +1,11 @@
 Paste this into your project's `AGENTS.md` or `CLAUDE.md` so robots log papercuts while working.
 
 ```markdown
-# Log papercuts
+# Log repo papercuts
 
-When you hit a small friction while working - a tool call that missed and had to be retried, a confusing or undocumented setup step, a flaky command, a stale cache, a misleading error, a non-obvious gotcha - log it to `PAPERCUTS.md` via `papercuts -m <model> "message"`. One or two sentences: what you were doing -> what got in the way (a guess at the cause/fix is a bonus). Do this in the moment even though none of these are blocking. They show where the repo needs sanding down. This is distinct from a changelog and from tracked issues (real bugs / tracked work).
+When you hit a small friction caused by this repository, log it to `PAPERCUTS.md` via `papercuts -m <model> 'message'`.
+
+Log it only when a plausible fix would change a version-controlled file in this repository: code, tests, scripts, configuration, or documentation. In one or two sentences, name the affected command, path, or subsystem and describe the likely repo-local improvement when apparent.
+
+Do not log generic shell mistakes, agent or tool limitations, sandbox restrictions, external service behavior, or friction owned by another repository. If this repository should detect, document, or accommodate an external problem, log that repo-local deficiency instead. This log is also distinct from a changelog and from tracked issues.
 ```
